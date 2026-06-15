@@ -124,10 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             noDataMessage.classList.add('hidden');
             
+            let htmlRows = '';
+            // Only animate the first 20 rows to save performance
             students.forEach((student, index) => {
-                const tr = document.createElement('tr');
-                tr.className = `rank-${student.RANK}`;
-                tr.style.setProperty('--animation-order', index);
+                const animDelay = index < 20 ? `style="--animation-order: ${index};"` : 'style="animation: none; opacity: 1;"';
                 
                 // Format numbers safely
                 const math = formatScore(student.TONGTOAN);
@@ -137,26 +137,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 const special = formatScore(student.DIEMCHUYEN);
                 const final = formatScore(student.TONGDX);
 
-                tr.innerHTML = `
-                    <td class="col-rank">
-                        <span class="rank-number">${student.RANK}</span>
-                    </td>
-                    <td>${student.SBD}</td>
-                    <td>
-                        <div class="student-name">${student.FULLNAME || 'N/A'}</div>
-                    </td>
-                    <td>
-                        <div class="school-name">${student.TENTRUONG || 'Thí sinh tự do'}</div>
-                    </td>
-                    <td class="col-score text-right">${math}</td>
-                    <td class="col-score text-right">${lit}</td>
-                    <td class="col-score text-right">${eng}</td>
-                    <td class="col-score text-right">${total}</td>
-                    <td class="col-score highlight-score text-right">${special}</td>
-                    <td class="col-score text-right">${final}</td>
+                htmlRows += `
+                    <tr class="rank-${student.RANK}" ${animDelay}>
+                        <td class="col-rank">
+                            <span class="rank-number">${student.RANK}</span>
+                        </td>
+                        <td>${student.SBD}</td>
+                        <td>
+                            <div class="student-name">${student.FULLNAME || 'N/A'}</div>
+                        </td>
+                        <td>
+                            <div class="school-name">${student.TENTRUONG || 'Thí sinh tự do'}</div>
+                        </td>
+                        <td class="col-score text-right">${math}</td>
+                        <td class="col-score text-right">${lit}</td>
+                        <td class="col-score text-right">${eng}</td>
+                        <td class="col-score text-right">${total}</td>
+                        <td class="col-score highlight-score text-right">${special}</td>
+                        <td class="col-score text-right">${final}</td>
+                    </tr>
                 `;
-                leaderboardBody.appendChild(tr);
             });
+            leaderboardBody.innerHTML = htmlRows;
         }
     }
 
