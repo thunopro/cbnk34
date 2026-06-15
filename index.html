@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng Điểm Thi Lớp 10 Chuyên</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header glass-panel">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/bluelock_logo.png" alt="Blue Lock Logo" class="bluelock-logo">
+                    <div>
+                        <h1>Bảng Xếp Hạng Điểm Thi Chuyên</h1>
+                        <p>Kỳ thi tuyển sinh vào lớp 10 THPT</p>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm SBD hoặc Họ tên...">
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar / Subject Tabs -->
+            <aside class="sidebar glass-panel">
+                <h3 class="sidebar-title"><i class="fa-solid fa-book-open"></i> Môn Chuyên</h3>
+                <ul class="subject-list" id="subjectList">
+                    <!-- Tabs will be generated here -->
+                </ul>
+            </aside>
+
+            <!-- Main Content / Leaderboard -->
+            <main class="content-area glass-panel">
+                <div class="content-header">
+                    <h2 id="currentSubjectTitle">Chuyên ...</h2>
+                    <div class="stats">
+                        <span class="stat-badge"><i class="fa-solid fa-users"></i> <span id="totalStudents">0</span> Thí sinh</span>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th class="col-rank">Hạng</th>
+                                <th>SBD</th>
+                                <th>Họ và tên</th>
+                                <th>Trường THCS</th>
+                                <th class="col-score text-right">Toán</th>
+                                <th class="col-score text-right">Văn</th>
+                                <th class="col-score text-right">Anh</th>
+                                <th class="col-score text-right">Tổng ĐT</th>
+                                <th class="col-score highlight-score text-right">Điểm Chuyên</th>
+                                <th class="col-score text-right">Tổng ĐX</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <!-- Data rows will be generated here -->
+                        </tbody>
+                    </table>
+                    <div id="noDataMessage" class="no-data hidden">
+                        <i class="fa-regular fa-face-frown-open"></i>
+                        <p>Không tìm thấy kết quả nào!</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <!-- Contact Voice -->
+        <a href="tel:+84123456789" class="contact-btn voice-btn glass-panel" title="Contact Voice">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <span>Voice</span>
+        </a>
+        <!-- Contact Us -->
+        <a href="javascript:void(0)" id="contactUsBtn" class="contact-btn us-btn glass-panel" title="Contact Us">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Contact Us</span>
+        </a>
+    </div>
+
+    <!-- Contact Modal Overlay -->
+    <div id="contactModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <img src="assets/contactus.png" alt="Contact Us" class="modal-img">
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="contactAudio" src="assets/contactvoice.mp3" preload="auto"></audio>
+
+    <!-- JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>

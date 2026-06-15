@@ -1,0 +1,20 @@
+# Environments
+venv/
+env/
+ENV/
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.vscode/
+.idea/
+.gemini/
+
+# Optional: Ignore large data files if you don't want to push them to git
+# (Uncomment below if you want to ignore CSV/PDF files)
+# *.csv
+# *.pdf
