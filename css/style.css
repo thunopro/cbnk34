@@ -62,13 +62,13 @@ body {
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: transparent;
     z-index: 1000;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 2rem;
+    padding-bottom: 7rem; /* To sit above the floating buttons */
     opacity: 1;
     transition: opacity 0.3s ease;
 }
@@ -76,51 +76,56 @@ body {
 .modal-overlay.hidden {
     opacity: 0;
     pointer-events: none;
-    display: flex !important; /* Keep display flex to allow transition, rely on opacity/pointer-events */
+    display: flex !important; /* Keep display flex to allow transition */
 }
 
 .modal-content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 300px; /* Small image */
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-@keyframes scaleUp {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+.modal-overlay.hidden .modal-content {
+    animation: none;
+    transform: translateY(50px);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .modal-img {
     max-width: 100%;
-    max-height: 80vh;
+    height: auto;
     border-radius: var(--radius-lg);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.3);
     border: 2px solid var(--glass-border);
 }
 
 .close-btn {
     position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 40px;
-    height: 40px;
+    top: -15px;
+    right: -15px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: var(--text-highlight);
     color: #fff;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 .close-btn:hover {
     background: var(--accent-hover);
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .shape-1 {
