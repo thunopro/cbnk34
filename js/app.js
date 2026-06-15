@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const eng = formatScore(student.TIENGANH);
                 const total = formatScore(student.TONGDT);
                 const special = formatScore(student.DIEMCHUYEN);
-                const final = formatScore(student.TONGDX);
 
                 htmlRows += `
                     <tr class="rank-${student.RANK}" ${animDelay}>
@@ -154,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td class="col-score text-right">${eng}</td>
                         <td class="col-score text-right">${total}</td>
                         <td class="col-score highlight-score text-right">${special}</td>
-                        <td class="col-score text-right">${final}</td>
                     </tr>
                 `;
             });

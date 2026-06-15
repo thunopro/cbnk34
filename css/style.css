@@ -1,15 +1,14 @@
-:root {
-    /* Color Palette - Premium Blue Block */
+    /* Color Palette - Elegant Dark Blue */
     --bg-primary: #020617;
     --bg-secondary: #0f172a;
     --blue-glow-1: #3b82f6;
     --blue-glow-2: #8b5cf6;
     --blue-glow-3: #1d4ed8;
     
-    /* Glassmorphism */
-    --glass-bg: rgba(30, 41, 59, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* Glassmorphism - Sáng và trong suốt hơn */
+    --glass-bg: rgba(15, 23, 42, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     
     /* Text Colors */
     --text-main: #f8fafc;
@@ -22,7 +21,7 @@
     /* UI Elements */
     --accent: #3b82f6;
     --accent-hover: #2563eb;
-    --row-hover: rgba(59, 130, 246, 0.15);
+    --row-hover: rgba(255, 255, 255, 0.05);
     
     /* Sizing */
     --radius-lg: 24px;
@@ -39,7 +38,7 @@
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #020617;
-    background-image: linear-gradient(rgba(2, 6, 23, 0.4), rgba(15, 23, 42, 0.6)), url('../assets/bluelock.jpg');
+    background-image: linear-gradient(rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.4)), url('../assets/bluelock.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -47,6 +46,8 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    /* Thêm shadow cho mọi text để dễ đọc trên nền ảnh */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 /* Background Animated Shapes - Hide if they interfere with image, or keep for effect */
@@ -165,11 +166,11 @@ body {
 
 /* Glassmorphism Panel */
 .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
 }
 
 /* Layout */
@@ -219,9 +220,9 @@ body {
 }
 
 .logo p {
+    font-size: 0.9rem;
     color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-top: 0.2rem;
+    font-weight: 400;
 }
 
 /* Search Box */
@@ -273,7 +274,7 @@ body {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.5rem;
     overflow-y: auto;
 }
 
@@ -298,14 +299,15 @@ body {
 
 .subject-list li {
     padding: 0.8rem 1.2rem;
+    margin-bottom: 0.5rem;
     border-radius: var(--radius-md);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid transparent;
 }
 
 .subject-list li:hover {
@@ -365,9 +367,10 @@ body {
 }
 
 .table-container {
-    flex: 1;
-    overflow: auto;
-    position: relative;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    /* Loại bỏ border */
+    border: none;
 }
 
 .table-container::-webkit-scrollbar {
@@ -388,20 +391,22 @@ body {
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
+    min-width: 800px;
 }
 
 .leaderboard-table th {
-    position: sticky;
-    top: 0;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted);
-    font-weight: 600;
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(10px);
     z-index: 10;
 }
 
@@ -459,11 +464,16 @@ body {
     box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
     transform: scale(1.1);
 }
+.rank-1 td {
+    background: linear-gradient(to right, rgba(251, 191, 36, 0.1), transparent);
+}
+
 .rank-2 .rank-number {
     background: linear-gradient(135deg, #cbd5e1, #64748b);
     color: #fff;
     box-shadow: 0 0 15px rgba(203, 213, 225, 0.3);
 }
+
 .rank-3 .rank-number {
     background: linear-gradient(135deg, #d97706, #92400e);
     color: #fff;
